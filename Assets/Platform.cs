@@ -5,7 +5,8 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField]
-    private List<MeshRenderer> meshes;  
+    private List<MeshRenderer> meshes; 
+    public float platformLenth;
 
     void Start()
     {
