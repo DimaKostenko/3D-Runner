@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2121365714}
-  playerSpeed: 50
+  playerSpeed: 20
   maxDistanceOfPlayerFromZeroPoint: 50
   platformCreateDistanceZ: 200
   platformDestroyDistanceZ: -50

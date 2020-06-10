@@ -55,7 +55,9 @@ MonoBehaviour:
   - {fileID: 7143333111287211069, guid: 4f1f547812216d046b8946051a5d1d08, type: 3}
   - {fileID: 1521593697546269462, guid: 5071d4b3e724e3f4cabb28b91a64e45d, type: 3}
   - {fileID: 5338226715579785596, guid: e6b941917ca834547924366d1ab4eac6, type: 3}
-  distanceBetweenBarrierBlocks: 0
+  - {fileID: 9193135065542547721, guid: ec8f499dc2938764f8a48115ea9c50b7, type: 3}
+  - {fileID: 2561767416161208114, guid: c54ed4460b4099b4c930382cde8fe4c5, type: 3}
+  distanceBetweenBarrierBlocks: 19
 --- !u!1 &2582483874973791701
 GameObject:
   m_ObjectHideFlags: 0
