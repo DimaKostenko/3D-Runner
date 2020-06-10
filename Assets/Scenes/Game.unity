@@ -341,9 +341,7 @@ MonoBehaviour:
   platformCreateDistanceZ: 200
   platformDestroyDistanceZ: -50
   platformsArea: {fileID: 1629092373}
-  platform: {fileID: 363116493556774283, guid: a172fed0e4263eb449f3e52a0a19e8fe, type: 3}
   laneOffset: 2
-  platformsCount: 4
   platforms:
   - {fileID: 6523930222625702756, guid: 1601ecaa67d9fc542b1fb8575a112b71, type: 3}
   - {fileID: 6523930222625702756, guid: a172fed0e4263eb449f3e52a0a19e8fe, type: 3}
@@ -909,7 +907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830007763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 8.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 940424476}
