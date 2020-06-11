@@ -10,9 +10,7 @@ public class Platform : MonoBehaviour
     [SerializeField]
     private Transform barriers;
     [SerializeField]
-    private List<GameObject> barrierBlocks;
-    [SerializeField]
-    private float distanceBetweenBarrierBlocks;
+    private PlatformBarriersSetting platformBarriersSetting;
 
     void Start()
     {
@@ -22,13 +20,13 @@ public class Platform : MonoBehaviour
             meshes[i].material.color = platformColor;
         }
         // создаем препятствия
-        Vector3 spawnBarrierPoint = new Vector3(0f, 0f, -platformLenth/2 + distanceBetweenBarrierBlocks); 
+        Vector3 spawnBarrierPoint = new Vector3(0f, 0f, -platformLenth/2 + platformBarriersSetting.DistanceBetweenBarrierBlocks); 
         while (spawnBarrierPoint.z < platformLenth/2) //Спавним барриер если его z координата меньше чем координата где платформа заканчивается
         {
-            int randomIndex = Random.Range(0, barrierBlocks.Count);
-            GameObject barrier = Instantiate(barrierBlocks[randomIndex], barriers);
+            int randomIndex = Random.Range(0, platformBarriersSetting.BarrierBlocksList.Count);
+            GameObject barrier = Instantiate(platformBarriersSetting.BarrierBlocksList[randomIndex], barriers);
             barrier.transform.localPosition = spawnBarrierPoint;
-            spawnBarrierPoint += new Vector3(0f, 0f, distanceBetweenBarrierBlocks);
+            spawnBarrierPoint += new Vector3(0f, 0f, platformBarriersSetting.DistanceBetweenBarrierBlocks);
         }
 
     }

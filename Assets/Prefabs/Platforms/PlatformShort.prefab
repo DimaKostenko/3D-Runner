@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 363116493556774279}
   - component: {fileID: 6523930222625702756}
   m_Layer: 0
-  m_Name: Platform_short
+  m_Name: PlatformShort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 9193135065542547721, guid: ec8f499dc2938764f8a48115ea9c50b7, type: 3}
   - {fileID: 2561767416161208114, guid: c54ed4460b4099b4c930382cde8fe4c5, type: 3}
   distanceBetweenBarrierBlocks: 19
+  platformBarriersSetting: {fileID: 11400000, guid: e1f2ae29c89b10a4b94497aafa13ea6c,
+    type: 2}
 --- !u!1 &2582483874973791701
 GameObject:
   m_ObjectHideFlags: 0
