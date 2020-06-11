@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
     private List<MeshRenderer> meshes; 
     public float platformLenth;
     [SerializeField]
-    private Transform barriers;
+    private Transform barriersContainer;
     [SerializeField]
     private PlatformBarriersSetting platformBarriersSetting;
 
@@ -24,7 +24,7 @@ public class Platform : MonoBehaviour
         while (spawnBarrierPoint.z < platformLenth/2) //Спавним барриер если его z координата меньше чем координата где платформа заканчивается
         {
             int randomIndex = Random.Range(0, platformBarriersSetting.BarrierBlocksList.Count);
-            GameObject barrier = Instantiate(platformBarriersSetting.BarrierBlocksList[randomIndex], barriers);
+            GameObject barrier = Instantiate(platformBarriersSetting.BarrierBlocksList[randomIndex], barriersContainer);
             barrier.transform.localPosition = spawnBarrierPoint;
             spawnBarrierPoint += new Vector3(0f, 0f, platformBarriersSetting.DistanceBetweenBarrierBlocks);
         }

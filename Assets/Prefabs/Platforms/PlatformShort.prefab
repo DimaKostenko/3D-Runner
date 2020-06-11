@@ -50,14 +50,7 @@ MonoBehaviour:
   - {fileID: 3649782404185846584}
   - {fileID: 282801468321117430}
   platformLenth: 20
-  barriers: {fileID: 6114259831507011627}
-  barrierBlocks:
-  - {fileID: 7143333111287211069, guid: 4f1f547812216d046b8946051a5d1d08, type: 3}
-  - {fileID: 1521593697546269462, guid: 5071d4b3e724e3f4cabb28b91a64e45d, type: 3}
-  - {fileID: 5338226715579785596, guid: e6b941917ca834547924366d1ab4eac6, type: 3}
-  - {fileID: 9193135065542547721, guid: ec8f499dc2938764f8a48115ea9c50b7, type: 3}
-  - {fileID: 2561767416161208114, guid: c54ed4460b4099b4c930382cde8fe4c5, type: 3}
-  distanceBetweenBarrierBlocks: 19
+  barriersContainer: {fileID: 6114259831507011627}
   platformBarriersSetting: {fileID: 11400000, guid: e1f2ae29c89b10a4b94497aafa13ea6c,
     type: 2}
 --- !u!1 &2582483874973791701
@@ -256,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6114259831507011627}
   m_Layer: 0
-  m_Name: Barriers
+  m_Name: BarriersContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5642802436902163546}
   m_Layer: 0
-  m_Name: Path
+  m_Name: PathContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3802594753915156751}
+  - component: {fileID: 1304211908270189733}
   m_Layer: 0
   m_Name: BarrierBlock5
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304211908270189733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561767416161208114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9cfc84de24b624aa3fd0b1ee647003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2788924595023020398
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +58,7 @@ GameObject:
   - component: {fileID: 6103049719451893871}
   - component: {fileID: 6845318860918049728}
   m_Layer: 0
-  m_Name: Cube2
+  m_Name: Barrier2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +151,7 @@ GameObject:
   - component: {fileID: 4463072373627220056}
   - component: {fileID: 8216412225077090331}
   m_Layer: 0
-  m_Name: Cube1
+  m_Name: Barrier1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

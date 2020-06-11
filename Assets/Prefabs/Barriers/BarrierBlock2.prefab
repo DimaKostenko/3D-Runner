@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168171727319338283}
+  - component: {fileID: 8909645975194291799}
   m_Layer: 0
   m_Name: BarrierBlock2
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8909645975194291799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521593697546269462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9cfc84de24b624aa3fd0b1ee647003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4485496964060637113
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,8 +56,9 @@ GameObject:
   - component: {fileID: 7925121078425275656}
   - component: {fileID: 3284413232049625571}
   - component: {fileID: 7448709797854028918}
+  - component: {fileID: 5109427357716373710}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,3 +138,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5109427357716373710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485496964060637113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e1e993f89d867499f26e4722775b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
