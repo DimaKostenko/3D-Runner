@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerEnter(Collider col){
+        if (col.gameObject.tag == "Coin"){
+            GameStorage.Instance.GameManager.CoinCollected();
+        }
+        if (col.gameObject.tag == "Barrier"){
+            col.gameObject.GetComponent<IBarrier>().OnPlayerCollisionEnter();
+        }
     }
 }

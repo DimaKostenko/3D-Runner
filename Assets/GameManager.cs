@@ -11,4 +11,8 @@ public class GameManager : MonoBehaviour
     public void ContinueGame(){
         Debug.Log("ContinueGame");
     }
+
+    public void CoinCollected(){
+        Debug.Log("CoinCollected");
+    }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BarrierPunch : Barrier
 {
-    protected override void OnPlayerCollisionEnter(){
+    public override void OnPlayerCollisionEnter()
+    {
         GameStorage.Instance.GameManager.ContinueGame();
     }
 }

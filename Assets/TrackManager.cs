@@ -33,7 +33,11 @@ public class TrackManager : MonoBehaviour
     private GameObject coinPrefab;
     [SerializeField]
     private Transform coinsContainer;
+    [SerializeField]
+    private float coinsSpawnDeltaTime;
     private List<GameObject> spawnedCoins = new List<GameObject>();
+    [SerializeField]
+    private bool gameStarted;
 
     private void Start() {
         playerTransform = playerController.transform;
@@ -42,11 +46,21 @@ public class TrackManager : MonoBehaviour
 
     private void Init(){
         AddPlatforms();
-        SpawnCoins();//toRevert
+        StartCoroutine(SpawnCoinsCoroutine());
     } 
 
+    IEnumerator SpawnCoinsCoroutine()
+    {   
+        while(gameStarted){
+            SpawnCoins();
+            yield return new WaitForSeconds(coinsSpawnDeltaTime);
+        }
+        StopCoroutine(SpawnCoinsCoroutine());
+    }
+
     private void SpawnCoins(){
-        Vector3 coinsSpawnPosition = new Vector3 (0f, 0f, distanceToCoinsSpawn);
+        int randomLine = Random.Range(-1,1);
+        Vector3 coinsSpawnPosition = new Vector3 (randomLine * laneOffset, 0f, distanceToCoinsSpawn);
         for (int i = 0; i < coinsCount; i++)
         {
             GameObject coin = Instantiate(coinPrefab, coinsContainer);
@@ -71,7 +85,12 @@ public class TrackManager : MonoBehaviour
             }
             //монеты
             for(int i = 0; i < spawnedCoins.Count; i++){
-                spawnedCoins[i].transform.position -= deltaPos;
+                if(spawnedCoins[i] == null){
+                    spawnedCoins.RemoveAt(i);
+                    i--;
+                } else {
+                    spawnedCoins[i].transform.position -= deltaPos;
+                }
             }
             frontPointOfFrontPlatform -= deltaPos;
             AddPlatforms(); //создаем новые платформы

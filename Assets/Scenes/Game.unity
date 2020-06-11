@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2121365714}
-  playerSpeed: 20
+  playerSpeed: 40
   maxDistanceOfPlayerFromZeroPoint: 50
   platformCreateDistanceZ: 200
   platformDestroyDistanceZ: -50
@@ -414,6 +414,8 @@ MonoBehaviour:
   coinPrefab: {fileID: 7915738956376479510, guid: ad8fd040443989946a99fe15a8aba51b,
     type: 3}
   coinsContainer: {fileID: 296573294}
+  coinsSpawnDeltaTime: 5
+  gameStarted: 1
 --- !u!4 &859623985
 Transform:
   m_ObjectHideFlags: 0
