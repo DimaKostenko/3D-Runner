@@ -7,10 +7,8 @@ public class GameState : State
 {
     [SerializeField]
     private TrackManager trackManager;
-    [SerializeField]
-    private float timeFromCoin;
-    [SerializeField]
-    private float scoreFromCoin;
+    public float timeFromCoin;
+    public float scoreFromCoin;
     public float time;
     private float savedTimeSetting;
     [SerializeField]
@@ -25,8 +23,7 @@ public class GameState : State
     private Coroutine timerCoroutine;
     [SerializeField]
     private GameObject gameCanvasContainer;
-    [SerializeField]
-    private float reducedTimeFromBarrier;
+    public float reducedTimeFromBarrier;
 
     private void Awake() {
         savedTimeSetting = time;
@@ -116,9 +113,10 @@ public class GameState : State
             timerText.text = SetTimerFormat(time);
             yield return new WaitForFixedUpdate();
         }
+        EndGame();
     }
 
-    private string SetTimerFormat(float time){
+    public string SetTimerFormat(float time){
         float _time = time;
         minutes = (int)(_time / 60f);
         seconds = (int)(_time % 60f);

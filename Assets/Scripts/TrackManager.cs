@@ -6,7 +6,13 @@ public class TrackManager : MonoBehaviour
 {
     [SerializeField]
     private PlayerController playerController;
-    public float playerSpeed;
+    [SerializeField]
+    private float playerStartSpeed;
+    [SerializeField]
+    public float playerMaxSpeed;
+    private float currentPlayerSpeed;
+    [SerializeField]
+    private float playerSpeedModifier;
     [SerializeField]
     private float maxDistanceOfPlayerFromZeroPoint;
     [SerializeField]
@@ -47,6 +53,7 @@ public class TrackManager : MonoBehaviour
     }
 
     public void Init(){
+        currentPlayerSpeed = playerStartSpeed;
         playerTransform.position = playerSpawnPosition;
         RemoveAllObjects();
         frontPointOfFrontPlatform = new Vector3 (0f, 0f, 0f);
@@ -98,7 +105,10 @@ public class TrackManager : MonoBehaviour
         if(!GameStorage.Instance.GameState.gameStarted){
             return;
         }
-        playerTransform.Translate(Vector3.forward * playerSpeed * Time.deltaTime);
+        if(currentPlayerSpeed < playerMaxSpeed){
+            currentPlayerSpeed += playerSpeedModifier;
+        }
+        playerTransform.Translate(Vector3.forward * currentPlayerSpeed * Time.deltaTime);
         //Возвращаем объекты в начало координат
         if(playerTransform.position.z > maxDistanceOfPlayerFromZeroPoint){
             //игрок
