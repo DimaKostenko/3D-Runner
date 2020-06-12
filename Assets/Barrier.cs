@@ -6,6 +6,6 @@ public class Barrier : MonoBehaviour, IBarrier
 {
     public virtual void OnPlayerCollisionEnter()
     {
-        GameStorage.Instance.GameManager.EndGame();
+        GameStorage.Instance.GameState.EndGame();
     }
 }

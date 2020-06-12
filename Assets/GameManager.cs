@@ -1,75 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Text;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private float timeFromCoin;
+    private State startState;
+    private State currentState;
+    public static GameManager Instance { get; private set; }
+    private GameManager gameManager;
     [SerializeField]
-    private float scoreFromCoin;
-    public float time;
-    [SerializeField]
-    private Text timerText; 
-    public float score;
-    [SerializeField]
-    private Text scoreText; 
+    private State[] states;
+    private Dictionary<string, State> stateDict = new Dictionary<string, State>();
+    private List<State> stateStack = new List<State>();
 
-
-    float seconds, minutes, milliseconds;
-    private void Start() {
-        StartCoroutine(StartTimer());
-        //timerText.text = time.ToString();
-    }
-
-    public void IncreaseScore(){
-        score += scoreFromCoin;
-        scoreText.text = score.ToString();
-    }
-
-    public void AddTimeToTimer(){
-        time += timeFromCoin;
-        timerText.text = SetTimerFormat(time);
-    }
-
-    IEnumerator StartTimer()
-    {   
-        while(time > 0f){
-            time -= Time.deltaTime;
-            timerText.text = SetTimerFormat(time);
-            yield return new WaitForFixedUpdate();
+    private void Awake() {
+        for(int i = 0; i < states.Length; ++i)
+        {
+            states[i].manager = this;
+            stateDict.Add(states[i].GetName(), states[i]);
         }
+        stateStack.Add(startState);
+        DontDestroyOnLoad(gameObject);
+    }
+    
+    public void SwitchState(string newState)
+    {
+        State state = FindState(newState);
+        if (state == null)
+        {
+            Debug.LogError("Can't find the state named " + newState);
+            return;
+        }
+
+        stateStack[stateStack.Count - 1].Exit(state);
+        state.Enter(stateStack[stateStack.Count - 1]);
+        stateStack.RemoveAt(stateStack.Count - 1);
+        stateStack.Add(state);
     }
 
-    private string SetTimerFormat(float time){
-        float _time = time;
-        minutes = (int)(_time / 60f);
-        seconds = (int)(_time % 60f);
-        milliseconds = (int)(_time * 100f) % 100;
-        StringBuilder sb = new StringBuilder();
-        sb.Append(minutes.ToString("00"));
-        sb.Append(":");
-        sb.Append(seconds.ToString("00"));
-        sb.Append(":");
-        sb.Append(milliseconds.ToString("00"));
-        return sb.ToString();
-    }
+	public State FindState(string stateName)
+	{
+		State state;
+		if (!stateDict.TryGetValue(stateName, out state))
+		{
+			return null;
+		}
 
-    public void StopTimer(){
-        StopCoroutine(StartTimer());
-    }
+		return state;
+	}
 
-    public void EndGame(){
-        Debug.Log("EndGame");
-    }
+}
 
-    public void ContinueGame(){
-        Debug.Log("ContinueGame");
-    }
-
-    public void CoinCollected(){
-        Debug.Log("CoinCollected");
-    }
+public abstract class State : MonoBehaviour
+{
+    [HideInInspector]
+    public GameManager manager;
+    public abstract void Enter(State from);
+    public abstract void Exit(State to);
+    public abstract string GetName();
 }

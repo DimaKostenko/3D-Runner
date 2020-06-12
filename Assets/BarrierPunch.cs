@@ -6,6 +6,6 @@ public class BarrierPunch : Barrier
 {
     public override void OnPlayerCollisionEnter()
     {
-        GameStorage.Instance.GameManager.ContinueGame();
+        GameStorage.Instance.GameState.ContinueGame();
     }
 }
