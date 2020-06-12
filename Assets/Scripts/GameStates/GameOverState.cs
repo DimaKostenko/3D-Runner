@@ -11,18 +11,26 @@ public class GameOverState : State
     private Text scoreText; 
     [SerializeField]
     private Button restartButton;
+    [SerializeField]
+    private Button mainMenuButton;
 
     void OnEnable()
     {
         restartButton.onClick.AddListener(OnRestartButton);
+        mainMenuButton.onClick.AddListener(OnMainMenuButton);
     }
 
     private void OnDisable() {
         restartButton.onClick.RemoveListener(OnRestartButton);
+        mainMenuButton.onClick.RemoveListener(OnMainMenuButton);
     }
 
     private void OnRestartButton(){
         manager.SwitchState("Game");
+    }
+
+    private void OnMainMenuButton(){
+        manager.SwitchState("PreGame");
     }
 
     public override void Enter(State from)

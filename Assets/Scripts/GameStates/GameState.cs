@@ -24,6 +24,10 @@ public class GameState : State
     [SerializeField]
     private GameObject gameCanvasContainer;
 
+    private void Awake() {
+        savedTimeSetting = time;
+    }
+
     public override void Enter(State from)
     {
         gameStarted = true;
@@ -63,11 +67,12 @@ public class GameState : State
     }
     
     float seconds, minutes, milliseconds;
+    /*
     private void Awake() {
         savedTimeSetting = time;
         gameStarted = true;
         timerCoroutine = StartCoroutine(StartTimer());
-    }
+    }*/
 
     public void IncreaseScore(){
         score += scoreFromCoin;
@@ -103,7 +108,9 @@ public class GameState : State
     }
 
     public void StopTimer(){
-        StopCoroutine(timerCoroutine);
+        if(timerCoroutine != null){
+            StopCoroutine(timerCoroutine);
+        }
     }
 
     public void ContinueGame(){
