@@ -3734,6 +3734,7 @@ MonoBehaviour:
   scoreText: {fileID: 2108615796}
   gameStarted: 0
   gameCanvasContainer: {fileID: 1950157382}
+  reducedTimeFromBarrier: 10
 --- !u!1 &2058177001
 GameObject:
   m_ObjectHideFlags: 0

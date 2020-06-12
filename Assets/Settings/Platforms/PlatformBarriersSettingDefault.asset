@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlatformBarriersSettingDefault
   m_EditorClassIdentifier: 
   barrierBlocks:
-  - {fileID: 7143333111287211069, guid: 4f1f547812216d046b8946051a5d1d08, type: 3}
+  - {fileID: 2064042964744089598, guid: f7a8da75effe7834dbbd20190b2d2d58, type: 3}
   - {fileID: 1521593697546269462, guid: 5071d4b3e724e3f4cabb28b91a64e45d, type: 3}
+  - {fileID: 4924053668908795822, guid: e8d1e80796a9014489163f703337cb85, type: 3}
   distanceBetweenBarrierBlocks: 19

@@ -23,6 +23,8 @@ public class GameState : State
     private Coroutine timerCoroutine;
     [SerializeField]
     private GameObject gameCanvasContainer;
+    [SerializeField]
+    private float reducedTimeFromBarrier;
 
     private void Awake() {
         savedTimeSetting = time;
@@ -83,6 +85,12 @@ public class GameState : State
         time += timeFromCoin;
         timerText.text = SetTimerFormat(time);
     }
+
+    public void ReduceTime(){
+        time -= reducedTimeFromBarrier;
+        timerText.text = SetTimerFormat(time);
+    }
+
 
     IEnumerator StartTimer()
     {   

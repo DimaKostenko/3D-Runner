@@ -7,5 +7,7 @@ public class BarrierPunch : Barrier
     public override void OnPlayerCollisionEnter()
     {
         GameStorage.Instance.GameState.ContinueGame();
+        GameStorage.Instance.GameState.ReduceTime();
+        Destroy(gameObject);
     }
 }
