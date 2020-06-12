@@ -13,6 +13,8 @@ public class GameOverState : State
     private Button restartButton;
     [SerializeField]
     private Button mainMenuButton;
+    [SerializeField]
+    private Text bestScoreText;
 
     void OnEnable()
     {
@@ -35,6 +37,7 @@ public class GameOverState : State
 
     public override void Enter(State from)
     {
+        bestScoreText.text = GameStorage.Instance.DataManager.BestScore.ToString();
         scoreText.text = GameStorage.Instance.GameState.score.ToString();
         gameOverCanvasContainer.SetActive(true);
         Debug.Log("GameOverState-Enter");

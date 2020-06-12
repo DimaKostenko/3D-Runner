@@ -7,6 +7,8 @@ public class GameStorage : MonoBehaviour
     public static GameStorage Instance { get; private set; } // static singleton
     [SerializeField]
     private GameState gameState;
+    [SerializeField]
+    private DataManager dataManager;
 
     // Start is called before the first frame update
     void Awake() {
@@ -15,15 +17,26 @@ public class GameStorage : MonoBehaviour
         } else { 
             Destroy(gameObject); 
         }
+
+        if(dataManager == null){
+            dataManager = new DataManager();
+        }
         DontDestroyOnLoad(gameObject);
     }
-
     
     public GameState GameState 
     {
         get
         {
             return gameState;
+        }
+    }
+
+    public DataManager DataManager 
+    {
+        get
+        {
+            return dataManager;
         }
     }
 }

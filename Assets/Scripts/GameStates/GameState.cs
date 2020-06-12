@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
@@ -19,6 +18,9 @@ public class GameState : State
     public float score;
     [SerializeField]
     private Text scoreText; 
+    public float bestScore;
+    [SerializeField]
+    private Text bestScoreText; 
     public bool gameStarted = true;
     private Coroutine timerCoroutine;
     [SerializeField]
@@ -36,9 +38,15 @@ public class GameState : State
         trackManager.Init();
         ResetTimer();
         ResetScore();
+        SetBestScore();
         timerCoroutine = StartCoroutine(StartTimer());
         gameCanvasContainer.SetActive(true);
         Debug.Log("GameState-Enter");
+    }
+
+    private void SetBestScore(){
+        bestScore = GameStorage.Instance.DataManager.BestScore;
+        bestScoreText.text = bestScore.ToString();
     }
 
 	public override void Exit(State to)
@@ -51,6 +59,7 @@ public class GameState : State
         trackManager.StopSpawnCoinsCoroutine();
         gameStarted = false;
         StopTimer();
+        CheckAndSaveBestScore();
         manager.SwitchState("GameOver");
     }
 
@@ -69,16 +78,24 @@ public class GameState : State
     }
     
     float seconds, minutes, milliseconds;
-    /*
-    private void Awake() {
-        savedTimeSetting = time;
-        gameStarted = true;
-        timerCoroutine = StartCoroutine(StartTimer());
-    }*/
 
     public void IncreaseScore(){
         score += scoreFromCoin;
         scoreText.text = score.ToString();
+        CheckAndSetBestScoreText();
+    }
+
+    private void CheckAndSetBestScoreText(){
+        if(score >= bestScore){
+            bestScore = score;
+            bestScoreText.text = bestScore.ToString();
+        }
+    }
+
+    private void CheckAndSaveBestScore(){
+        if(bestScore > GameStorage.Instance.DataManager.BestScore){
+            GameStorage.Instance.DataManager.BestScore = bestScore;
+        }
     }
 
     public void AddTimeToTimer(){

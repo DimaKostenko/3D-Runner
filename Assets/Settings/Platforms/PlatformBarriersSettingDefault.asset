@@ -14,6 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrierBlocks:
   - {fileID: 2064042964744089598, guid: f7a8da75effe7834dbbd20190b2d2d58, type: 3}
-  - {fileID: 1521593697546269462, guid: 5071d4b3e724e3f4cabb28b91a64e45d, type: 3}
+  - {fileID: 4460954065998754816, guid: 9d96712fbaa12b740823998f5066926d, type: 3}
+  - {fileID: 6819246584298447406, guid: dcfd4b6a602cab9448e73f02dda66bf7, type: 3}
+  - {fileID: 1477229410451012560, guid: 88d4a88014e3b3641ada48f7d0e53942, type: 3}
+  - {fileID: 233710859574631345, guid: c9550513829c58b42b002bebe971294e, type: 3}
+  - {fileID: 6146864827814337826, guid: 56b7cd28ea7d3f64abda9dda5edec3ef, type: 3}
+  - {fileID: 986635412527044051, guid: d5960950e6ca7204ebcf08984dcd9c8f, type: 3}
   - {fileID: 4924053668908795822, guid: e8d1e80796a9014489163f703337cb85, type: 3}
+  - {fileID: 6651485404105084338, guid: c0bc998c993fa2f439a0c3632c90876b, type: 3}
+  - {fileID: 2993120512336785119, guid: 027496c8ae70dd844aad6028ae81ad64, type: 3}
+  - {fileID: 7143333111287211069, guid: 4f1f547812216d046b8946051a5d1d08, type: 3}
+  - {fileID: 1521593697546269462, guid: 5071d4b3e724e3f4cabb28b91a64e45d, type: 3}
+  - {fileID: 5338226715579785596, guid: e6b941917ca834547924366d1ab4eac6, type: 3}
+  - {fileID: 9193135065542547721, guid: ec8f499dc2938764f8a48115ea9c50b7, type: 3}
+  - {fileID: 2561767416161208114, guid: c54ed4460b4099b4c930382cde8fe4c5, type: 3}
   distanceBetweenBarrierBlocks: 19
