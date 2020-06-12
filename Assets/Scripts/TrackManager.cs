@@ -6,8 +6,7 @@ public class TrackManager : MonoBehaviour
 {
     [SerializeField]
     private PlayerController playerController;
-    [SerializeField]
-    private float playerSpeed;
+    public float playerSpeed;
     [SerializeField]
     private float maxDistanceOfPlayerFromZeroPoint;
     [SerializeField]
@@ -38,24 +37,48 @@ public class TrackManager : MonoBehaviour
     private List<GameObject> spawnedCoins = new List<GameObject>();
     [SerializeField]
     private bool gameStarted;
+    private Coroutine spawnCoinsCoroutine;
+    [SerializeField]
+    private Vector3 playerSpawnPosition;
 
     private void Start() {
         playerTransform = playerController.transform;
         Init();
     }
 
-    private void Init(){
+    public void Init(){
+        playerTransform.position = playerSpawnPosition;
+        RemoveAllObjects();
+        frontPointOfFrontPlatform = new Vector3 (0f, 0f, 0f);
         AddPlatforms();
-        StartCoroutine(SpawnCoinsCoroutine());
+        spawnCoinsCoroutine = StartCoroutine(SpawnCoinsCoroutine());
     } 
+
+    private void RemoveAllObjects(){
+        //удаляем все платформы
+        for (int i = 0; i < createdPlatforms.Count; i++){
+            Destroy(createdPlatforms[i].gameObject);
+            createdPlatforms.RemoveAt(i);
+            i--;
+        }
+        //удаляем все монеты
+        for (int i = 0; i < spawnedCoins.Count; i++){
+            Destroy(spawnedCoins[i].gameObject);
+            spawnedCoins.RemoveAt(i);
+            i--;
+        }
+    }
 
     IEnumerator SpawnCoinsCoroutine()
     {   
-        while(gameStarted){
+        while(GameStorage.Instance.GameState.gameStarted){
             SpawnCoins();
             yield return new WaitForSeconds(coinsSpawnDeltaTime);
         }
-        StopCoroutine(SpawnCoinsCoroutine());
+    }
+
+    public void StopSpawnCoinsCoroutine(){
+        StopCoroutine(spawnCoinsCoroutine);
     }
 
     private void SpawnCoins(){
@@ -72,7 +95,9 @@ public class TrackManager : MonoBehaviour
 
     void Update()
     {
-
+        if(!GameStorage.Instance.GameState.gameStarted){
+            return;
+        }
         playerTransform.Translate(Vector3.forward * playerSpeed * Time.deltaTime);
         //Возвращаем объекты в начало координат
         if(playerTransform.position.z > maxDistanceOfPlayerFromZeroPoint){

@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private State startState;
-    private State currentState;
     public static GameManager Instance { get; private set; }
     private GameManager gameManager;
     [SerializeField]

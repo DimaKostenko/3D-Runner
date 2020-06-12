@@ -6,7 +6,6 @@ public class PlayerCollider : MonoBehaviour
 {
     void OnTriggerEnter(Collider col){
         if (col.gameObject.tag == "Coin"){
-            GameStorage.Instance.GameState.CoinCollected();
             GameStorage.Instance.GameState.AddTimeToTimer();
             GameStorage.Instance.GameState.IncreaseScore();
         }

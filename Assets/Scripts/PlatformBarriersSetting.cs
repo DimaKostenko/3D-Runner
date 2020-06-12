@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
 [CreateAssetMenu(fileName = "PlatformSetting", menuName = "Settings/PlatformBarriersSetting", order = 50)]
 public class PlatformBarriersSetting : ScriptableObject {
     [SerializeField]

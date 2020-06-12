@@ -12,15 +12,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject characterCollider;
     private Vector3 targetPosition;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        if(!GameStorage.Instance.GameState.gameStarted){
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             ChangeLane(-1);
@@ -29,17 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             ChangeLane(1);
         }
-        else if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            //Jump();
-        }
-		else if (Input.GetKeyDown(KeyCode.DownArrow))
-		{
-            /*
-			if(!m_Sliding)
-				Slide();
-            */
-		}
         characterCollider.transform.localPosition = Vector3.MoveTowards(characterCollider.transform.localPosition, targetPosition, laneChangeSpeed * Time.deltaTime);
     }
 
