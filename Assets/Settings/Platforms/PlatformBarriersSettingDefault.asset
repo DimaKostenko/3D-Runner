@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31945a602cb29ce4a8b19ce072194b7e, type: 3}
   m_Name: PlatformBarriersSettingDefault
   m_EditorClassIdentifier: 
-  barrierBlocks:
+  _barrierBlocks:
   - {fileID: 2064042964744089598, guid: f7a8da75effe7834dbbd20190b2d2d58, type: 3}
   - {fileID: 4460954065998754816, guid: 9d96712fbaa12b740823998f5066926d, type: 3}
   - {fileID: 6819246584298447406, guid: dcfd4b6a602cab9448e73f02dda66bf7, type: 3}
@@ -28,4 +28,4 @@ MonoBehaviour:
   - {fileID: 5338226715579785596, guid: e6b941917ca834547924366d1ab4eac6, type: 3}
   - {fileID: 9193135065542547721, guid: ec8f499dc2938764f8a48115ea9c50b7, type: 3}
   - {fileID: 2561767416161208114, guid: c54ed4460b4099b4c930382cde8fe4c5, type: 3}
-  distanceBetweenBarrierBlocks: 19
+  _distanceBetweenBarrierBlocks: 19

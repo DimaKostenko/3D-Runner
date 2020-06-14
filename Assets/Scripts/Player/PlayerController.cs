@@ -1,19 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+public enum LineDirection
+    {
+        Left = -1,
+        Middle = 0,
+        Right = 1
+    }
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private TrackManager trackManager;
+    private TrackManager _trackManager = null;
     [SerializeField]
-    public float laneChangeSpeed = 1.0f;
-    private int currentLane = 1;
+    private float _laneChangeSpeed = 1.0f;
+    private int _currentLane = 1;
     [SerializeField]
-    private GameObject characterCollider;
-    private Vector3 targetPosition;
+    private GameObject _characterCollider = null;
+    private Vector3 _targetPosition;
 
-    // Update is called once per frame
     void Update()
     {
         if(!GameStorage.Instance.GameState.gameStarted){
@@ -22,23 +26,29 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            ChangeLane(-1);
+            ChangeLane(LineDirection.Left);
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            ChangeLane(1);
+            ChangeLane(LineDirection.Right);
         }
-        characterCollider.transform.localPosition = Vector3.MoveTowards(characterCollider.transform.localPosition, targetPosition, laneChangeSpeed * Time.deltaTime);
+        _characterCollider.transform.localPosition = Vector3.MoveTowards(_characterCollider.transform.localPosition, _targetPosition, _laneChangeSpeed * Time.deltaTime);
     }
 
-    public void ChangeLane(int direction)
-    {
-        int targetLane = currentLane + direction;
+    public void PutPlayerToLine(LineDirection line){
+        int direction = (int)line;
+        _currentLane = direction + 1;
+        _characterCollider.transform.localPosition = _targetPosition = new Vector3((direction) * _trackManager.laneOffset, 0f, 0f);
+    }
 
+    public void ChangeLane(LineDirection line)
+    {
+        int direction = (int)line;
+        int targetLane = _currentLane + direction;
         if (targetLane < 0 || targetLane > 2)
             return;
 
-        currentLane = targetLane;
-        targetPosition = new Vector3((currentLane - 1) * trackManager.laneOffset, 0f, 0f);
+        _currentLane = targetLane;
+        _targetPosition = new Vector3((_currentLane - 1) * _trackManager.laneOffset, 0f, 0f);
     }
 }

@@ -1,25 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+//Класс отвечает за переключение между состояниями игры (стартовое меню, ингейм и ендгейм)
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private State startState;
-    public static GameManager Instance { get; private set; }
-    private GameManager gameManager;
+    private State _startState = null;
     [SerializeField]
-    private State[] states;
-    private Dictionary<string, State> stateDict = new Dictionary<string, State>();
-    private List<State> stateStack = new List<State>();
+    private State[] _states = null;
+    private Dictionary<string, State> _stateDict = new Dictionary<string, State>();
+    private List<State> _stateStack = new List<State>();
 
     private void Awake() {
-        for(int i = 0; i < states.Length; ++i)
+        for(int i = 0; i < _states.Length; ++i)
         {
-            states[i].manager = this;
-            stateDict.Add(states[i].GetName(), states[i]);
+            _states[i].manager = this;
+            _stateDict.Add(_states[i].GetName(), _states[i]);
         }
-        stateStack.Add(startState);
+        _stateStack.Add(_startState);
         DontDestroyOnLoad(gameObject);
     }
     
@@ -32,16 +30,16 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        stateStack[stateStack.Count - 1].Exit(state);
-        state.Enter(stateStack[stateStack.Count - 1]);
-        stateStack.RemoveAt(stateStack.Count - 1);
-        stateStack.Add(state);
+        _stateStack[_stateStack.Count - 1].Exit(state);
+        state.Enter(_stateStack[_stateStack.Count - 1]);
+        _stateStack.RemoveAt(_stateStack.Count - 1);
+        _stateStack.Add(state);
     }
 
 	public State FindState(string stateName)
 	{
 		State state;
-		if (!stateDict.TryGetValue(stateName, out state))
+		if (!_stateDict.TryGetValue(stateName, out state))
 		{
 			return null;
 		}
@@ -55,7 +53,7 @@ public abstract class State : MonoBehaviour
 {
     [HideInInspector]
     public GameManager manager;
+    public abstract string GetName();
     public abstract void Enter(State from);
     public abstract void Exit(State to);
-    public abstract string GetName();
 }

@@ -1,22 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PreGameState : State
 {
     [SerializeField]
-    private Button startButton;
+    private Button _startButton = null;
     [SerializeField]
-    private GameObject pregameScene;
+    private GameObject _pregameScene = null;
     [SerializeField]
-    private GameObject preGameCanvasContainer;
+    private GameObject _preGameCanvasContainer = null;
     [SerializeField]
-    private TextMesh coinScoreCount;
+    private TextMesh _coinScoreCount = null;
     [SerializeField]
-    private TextMesh coinAddTimeCount;
+    private TextMesh _coinAddTimeCount = null;
     [SerializeField]
-    private TextMesh[] barriersReduceTimeCount;
+    private TextMesh[] _barriersReduceTimeCount = null;
+
+    public override string GetName()
+    {
+        return "PreGame";
+    }
+
+    public override void Exit(State to)
+    {
+        _pregameScene.SetActive(false);
+        _preGameCanvasContainer.SetActive(false);
+        Debug.Log("PreGameState-Exit");
+    }
+
+    public override void Enter(State from)
+    {
+        SetCoinDescriptionText();
+        SetBarriersReduceTimeCountText();
+        _pregameScene.SetActive(true);
+        _preGameCanvasContainer.SetActive(true);
+        Debug.Log("PreGameState-Enter");
+    }
 
     private void Start() {
         SetCoinDescriptionText();
@@ -25,47 +44,27 @@ public class PreGameState : State
 
     void OnEnable()
     {
-        startButton.onClick.AddListener(OnStartButton);
+        _startButton.onClick.AddListener(OnStartButton);
     }
 
     private void OnDisable() {
-        startButton.onClick.RemoveListener(OnStartButton);
+        _startButton.onClick.RemoveListener(OnStartButton);
     }
 
     private void OnStartButton(){
         manager.SwitchState("Game");
     }
 
-    public override void Enter(State from)
-    {
-        SetCoinDescriptionText();
-        SetBarriersReduceTimeCountText();
-        pregameScene.SetActive(true);
-        preGameCanvasContainer.SetActive(true);
-        Debug.Log("PreGameState-Enter");
-    }
-
     private void SetBarriersReduceTimeCountText(){
-        for (int i = 0; i < barriersReduceTimeCount.Length; i++)
+        float time = Mathf.Abs(GameStorage.Instance.GameState.reducedTimeFromBarrier);
+        for (int i = 0; i < _barriersReduceTimeCount.Length; i++)
         {
-            barriersReduceTimeCount[i].text = GameStorage.Instance.GameState.SetTimerFormat(GameStorage.Instance.GameState.reducedTimeFromBarrier);
+            _barriersReduceTimeCount[i].text = GameStorage.Instance.GameState.SetTimerFormat(time);
         }
     }
 
     private void SetCoinDescriptionText(){
-        coinScoreCount.text = GameStorage.Instance.GameState.scoreFromCoin.ToString();
-        coinAddTimeCount.text = GameStorage.Instance.GameState.SetTimerFormat(GameStorage.Instance.GameState.timeFromCoin);
-    }
-
-	public override void Exit(State to)
-    {
-        pregameScene.SetActive(false);
-        preGameCanvasContainer.SetActive(false);
-        Debug.Log("PreGameState-Exit");
-    }
-
-    public override string GetName()
-    {
-        return "PreGame";
+        _coinScoreCount.text = GameStorage.Instance.GameState.scoreFromCoin.ToString();
+        _coinAddTimeCount.text = GameStorage.Instance.GameState.SetTimerFormat(GameStorage.Instance.GameState.timeFromCoin);
     }
 }

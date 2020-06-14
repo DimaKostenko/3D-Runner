@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94efbddac4432034caa2febc31b24716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshes:
+  _meshes:
   - {fileID: 6743610782250432268}
   - {fileID: 3649782404185846584}
   - {fileID: 282801468321117430}
-  platformLenth: 60
-  barriersContainer: {fileID: 1293399284495299992}
-  platformBarriersSetting: {fileID: 11400000, guid: e1f2ae29c89b10a4b94497aafa13ea6c,
+  _platformLength: 60
+  _barriersContainer: {fileID: 1293399284495299992}
+  _platformBarriersSetting: {fileID: 11400000, guid: e1f2ae29c89b10a4b94497aafa13ea6c,
     type: 2}
 --- !u!1 &2391300222063395632
 GameObject:
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 25737867592630944}
   m_Layer: 0
-  m_Name: PathContainer
+  m_Name: PlatformsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

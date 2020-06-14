@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BarrierPunch : Barrier
+public class BarrierPunch : BarrierBase
 {
     public override void OnPlayerCollisionEnter()
     {
-        GameStorage.Instance.GameState.ContinueGame();
-        GameStorage.Instance.GameState.ReduceTime();
+        GameStorage.Instance.GameState.AddTimeToTimer(GameStorage.Instance.GameState.reducedTimeFromBarrier);
         Destroy(gameObject);
     }
 }

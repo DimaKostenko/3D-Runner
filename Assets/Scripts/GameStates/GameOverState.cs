@@ -1,30 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverState : State
 {
     [SerializeField]
-    private GameObject gameOverCanvasContainer;
+    private GameObject _gameOverCanvasContainer = null;
     [SerializeField]
-    private Text scoreText; 
+    private Text _scoreText = null; 
     [SerializeField]
-    private Button restartButton;
+    private Button _restartButton = null;
     [SerializeField]
-    private Button mainMenuButton;
+    private Button _mainMenuButton = null;
     [SerializeField]
-    private Text bestScoreText;
+    private Text _bestScoreText = null;
+
+    public override string GetName()
+    {
+        return "GameOver";
+    }
+
+    public override void Enter(State from)
+    {
+        _bestScoreText.text = GameStorage.Instance.DataManager.BestScore.ToString();
+        _scoreText.text = GameStorage.Instance.GameState.score.ToString();
+        _gameOverCanvasContainer.SetActive(true);
+        Debug.Log("GameOverState-Enter");
+    }
+
+	public override void Exit(State to)
+    {
+        _gameOverCanvasContainer.SetActive(false);
+        Debug.Log("GameOverState-Exit");
+    }
 
     void OnEnable()
     {
-        restartButton.onClick.AddListener(OnRestartButton);
-        mainMenuButton.onClick.AddListener(OnMainMenuButton);
+        _restartButton.onClick.AddListener(OnRestartButton);
+        _mainMenuButton.onClick.AddListener(OnMainMenuButton);
     }
 
     private void OnDisable() {
-        restartButton.onClick.RemoveListener(OnRestartButton);
-        mainMenuButton.onClick.RemoveListener(OnMainMenuButton);
+        _restartButton.onClick.RemoveListener(OnRestartButton);
+        _mainMenuButton.onClick.RemoveListener(OnMainMenuButton);
     }
 
     private void OnRestartButton(){
@@ -33,24 +50,5 @@ public class GameOverState : State
 
     private void OnMainMenuButton(){
         manager.SwitchState("PreGame");
-    }
-
-    public override void Enter(State from)
-    {
-        bestScoreText.text = GameStorage.Instance.DataManager.BestScore.ToString();
-        scoreText.text = GameStorage.Instance.GameState.score.ToString();
-        gameOverCanvasContainer.SetActive(true);
-        Debug.Log("GameOverState-Enter");
-    }
-
-	public override void Exit(State to)
-    {
-        gameOverCanvasContainer.SetActive(false);
-        Debug.Log("GameOverState-Exit");
-    }
-
-    public override string GetName()
-    {
-        return "GameOver";
     }
 }

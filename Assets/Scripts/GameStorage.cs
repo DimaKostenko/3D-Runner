@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameStorage : MonoBehaviour
 {
-    public static GameStorage Instance { get; private set; } // static singleton
+    public static GameStorage Instance { get; private set; }
     [SerializeField]
-    private GameState gameState;
+    private GameState _gameState = null;
     [SerializeField]
-    private DataManager dataManager;
+    private DataManager _dataManager = null;
+    public GameState GameState { get { return _gameState; } }
+    public DataManager DataManager { get { return _dataManager; } }
 
-    // Start is called before the first frame update
     void Awake() {
         if (Instance == null) {
             Instance = this;  
@@ -18,25 +17,10 @@ public class GameStorage : MonoBehaviour
             Destroy(gameObject); 
         }
 
-        if(dataManager == null){
-            dataManager = new DataManager();
+        if(_dataManager == null){
+            _dataManager = new DataManager();
         }
-        DontDestroyOnLoad(gameObject);
-    }
-    
-    public GameState GameState 
-    {
-        get
-        {
-            return gameState;
-        }
-    }
 
-    public DataManager DataManager 
-    {
-        get
-        {
-            return dataManager;
-        }
+        DontDestroyOnLoad(gameObject);
     }
 }

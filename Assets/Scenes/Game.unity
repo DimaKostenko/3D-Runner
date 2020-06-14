@@ -191,7 +191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131472284
 GameObject:
@@ -670,14 +670,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306624338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1629092374}
   - {fileID: 296573294}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 859623985}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384066347
 GameObject:
@@ -943,7 +943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519156213
 GameObject:
@@ -1579,28 +1579,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f936b90147100441b4ffff6f20d33fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 2121365714}
-  playerStartSpeed: 20
-  playerMaxSpeed: 50
-  playerSpeedModifier: 0.005
-  maxDistanceOfPlayerFromZeroPoint: 50
-  platformCreateDistanceZ: 200
-  platformDestroyDistanceZ: -50
-  platformsArea: {fileID: 1629092373}
+  _playerController: {fileID: 2121365714}
+  _playerStartSpeed: 20
+  _playerMaxSpeed: 75
+  _playerSpeedModifier: 0.01
+  _playerDefaultLine: 0
+  _playerSpawnPosition: {x: 0, y: 1, z: 0}
+  _platformCreateDistanceZ: 200
+  _platformDestroyDistanceZ: -50
+  _maxDistanceOfPlayerFromZeroPoint: 50
+  _platformsArea: {fileID: 1629092373}
   laneOffset: 2
-  platforms:
-  - {fileID: 6523930222625702756, guid: 1601ecaa67d9fc542b1fb8575a112b71, type: 3}
-  - {fileID: 6523930222625702756, guid: a172fed0e4263eb449f3e52a0a19e8fe, type: 3}
+  _platforms:
   - {fileID: 6523930222625702756, guid: fbd0ef384a81f0d44b8060589f735495, type: 3}
-  coinsCount: 10
-  distanceToCoinsSpawn: 200
-  distanceBetweenCoins: 2
-  coinPrefab: {fileID: 7915738956376479510, guid: ad8fd040443989946a99fe15a8aba51b,
+  - {fileID: 6523930222625702756, guid: a172fed0e4263eb449f3e52a0a19e8fe, type: 3}
+  - {fileID: 6523930222625702756, guid: 1601ecaa67d9fc542b1fb8575a112b71, type: 3}
+  _coinsCount: 10
+  _distanceToCoinsSpawn: 200
+  _distanceBetweenCoins: 2
+  _coinPrefab: {fileID: 7915738956376479510, guid: ad8fd040443989946a99fe15a8aba51b,
     type: 3}
-  coinsContainer: {fileID: 296573294}
-  coinsSpawnDeltaTime: 5
-  gameStarted: 0
-  playerSpawnPosition: {x: 0, y: 1, z: 0}
+  _coinsContainer: {fileID: 296573294}
+  _coinsSpawnDeltaTime: 5
 --- !u!4 &859623985
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,9 +1611,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 306624339}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &896732740
 GameObject:
@@ -1835,11 +1836,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  gameOverCanvasContainer: {fileID: 2128151586}
-  scoreText: {fileID: 794110015}
-  restartButton: {fileID: 1233206046}
-  mainMenuButton: {fileID: 299418731}
-  bestScoreText: {fileID: 1165164051}
+  _gameOverCanvasContainer: {fileID: 2128151586}
+  _scoreText: {fileID: 794110015}
+  _restartButton: {fileID: 1233206046}
+  _mainMenuButton: {fileID: 299418731}
+  _bestScoreText: {fileID: 1165164051}
 --- !u!1001 &969775662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2460,7 +2461,7 @@ Transform:
   - {fileID: 1423011695}
   - {fileID: 810500243}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1 &1255627379
 GameObject:
@@ -2506,12 +2507,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  startButton: {fileID: 1851552387}
-  pregameScene: {fileID: 1240206441}
-  preGameCanvasContainer: {fileID: 2099833003}
-  coinScoreCount: {fileID: 1692474079}
-  coinAddTimeCount: {fileID: 526659730}
-  barriersReduceTimeCount:
+  _startButton: {fileID: 1851552387}
+  _pregameScene: {fileID: 1240206441}
+  _preGameCanvasContainer: {fileID: 2099833003}
+  _coinScoreCount: {fileID: 1692474079}
+  _coinAddTimeCount: {fileID: 526659730}
+  _barriersReduceTimeCount:
   - {fileID: 1452829324}
   - {fileID: 1872338776}
 --- !u!1 &1256835313
@@ -3317,7 +3318,7 @@ RectTransform:
   - {fileID: 1950157383}
   - {fileID: 2128151587}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3898,8 +3899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e7d7252f302514da8123616dc13864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: {fileID: 1255627381}
-  states:
+  _startState: {fileID: 1255627381}
+  _states:
   - {fileID: 1255627381}
   - {fileID: 2025552314}
   - {fileID: 968804959}
@@ -3918,7 +3919,7 @@ Transform:
   - {fileID: 968804958}
   - {fileID: 1255627380}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715958440
 GameObject:
@@ -4275,7 +4276,7 @@ GameObject:
   - component: {fileID: 1942727776}
   - component: {fileID: 1942727777}
   m_Layer: 0
-  m_Name: PlayerSlot
+  m_Name: PlayerCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4482,8 +4483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a651154f836f54588ce4b5d15c6f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 2025552314}
-  dataManager: {fileID: 419333835}
+  _gameState: {fileID: 2025552314}
+  _dataManager: {fileID: 419333835}
 --- !u!4 &2004257660
 Transform:
   m_ObjectHideFlags: 0
@@ -4542,18 +4543,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  trackManager: {fileID: 859623984}
-  timeFromCoin: 1
+  _trackManager: {fileID: 859623984}
+  timeFromCoin: 0.75
   scoreFromCoin: 1
   time: 30
-  timerText: {fileID: 1256835315}
+  _timerText: {fileID: 1256835315}
   score: 0
-  scoreText: {fileID: 2108615796}
+  _scoreText: {fileID: 2108615796}
   bestScore: 0
-  bestScoreText: {fileID: 577576296}
+  _bestScoreText: {fileID: 577576296}
   gameStarted: 0
-  gameCanvasContainer: {fileID: 1950157382}
-  reducedTimeFromBarrier: 10
+  _gameCanvasContainer: {fileID: 1950157382}
+  reducedTimeFromBarrier: -10
 --- !u!1 &2032476889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4869,9 +4870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce5220547f20e34eb5022aed34ce50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackManager: {fileID: 859623984}
-  laneChangeSpeed: 30
-  characterCollider: {fileID: 1942727773}
+  _trackManager: {fileID: 859623984}
+  _laneChangeSpeed: 30
+  _characterCollider: {fileID: 1942727773}
 --- !u!4 &2121365715
 Transform:
   m_ObjectHideFlags: 0
